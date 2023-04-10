@@ -1,0 +1,54 @@
+h4{
+  font-size: max(.9em, .9vw);
+}
+
+.form {
+  width: clamp(300px, 50em, 80vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  margin: 1.5em;
+}
+
+.form > div {
+  width: 100%;
+  text-align: center;
+  margin: 0.4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    color: #282c34;
+    font-size: max(1em, 1vw);
+    min-height: 250px;
+}
+
+.form > div input, select {
+    max-width: 300px;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0.4em;
+  font-size: max(0.8em, 0.7vw);
+  resize: none;
+  margin: .3em;
+  border-radius: .5em;
+}
+
+.form > button {
+    background-color: rgb(0, 12, 174);
+    padding: .4em 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: .5em;
+    font-size: max(.8em, .7vw);
+    color: white
+    
+}
