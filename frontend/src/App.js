@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Post from "./Components/Home/Post";
 import Admin from "./Components/Dashboard/Admin";
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts } from "./Redux/postSlice";
 import { getUsers } from "./Redux/userSlice";
@@ -24,13 +24,10 @@ function App() {
     dispatch(getPosts());
     dispatch(getUsers());
 
-
-    if(!user.username && window.localStorage.user){
-      dispatch(userActions.setUser())
+    if (!user.username && window.localStorage.user) {
+      dispatch(userActions.setUser());
     }
   }, []);
-
-
 
   return (
     <div className={styles.App}>
@@ -47,6 +44,14 @@ function App() {
             <Route path={"/writepost"} element={<Write />} />
             <Route path={"/writepost/:id"} element={<EditPost />} />
             <Route path={"/admin"} element={<Admin />} />
+            <Route
+              path={"*"}
+              element={
+                <div>
+                  <h1>404: Route not found</h1>
+                </div>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>

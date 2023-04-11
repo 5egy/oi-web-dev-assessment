@@ -58,8 +58,8 @@ export const writePost = createAsyncThunk("posts/addPost", async (post) => {
   return "succesful";
 });
 
-export const editPost = createAsyncThunk("posts/patchPost", async (post) => {
-  await fetch("http://localhost:5000/posts", {
+export const editPost = createAsyncThunk("posts/patchPost", async (id, post) => {
+  await fetch("http://localhost:5000/posts/" + id , {
     method: "PATCH",
     body: JSON.stringify(post),
     headers: { "Content-type": "application/json" },

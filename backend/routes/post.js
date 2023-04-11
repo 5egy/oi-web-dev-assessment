@@ -12,13 +12,11 @@ router.get("/posts", async (req, res) => {
 router.get("/posts/:id", async (req, res) => {
   const id = req.params.id;
   const db = await connect();
-  //req.url.toString().slice(req.url.toString().lastIndexOf("/") + 1);
   const post = await db
     .collection("posts")
     .find({ _id: new ObjectId(id) })
     .toArray();
   res.send(post[0]);
-  // res.json()
 });
 
 router.post("/posts", async (req, res) => {

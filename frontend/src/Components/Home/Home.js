@@ -29,7 +29,7 @@ const Home = ({ posts }) => {
                         <div className={styles.edel}>
                           <p
                             className={styles.edit}
-                            // onClick={() => Navigate("/writepost/" + p._id)}
+                            onClick={() => Navigate("/writepost/" + p._id)}
                           >
                             edit
                           </p>
@@ -55,10 +55,11 @@ const Home = ({ posts }) => {
                     <p>
                       author: <span>{p.author}</span>
                     </p>
+
                     <p
                       onClick={() => {
                         dispatch(actions.readPost(p._id));
-                        Navigate(`/post/` + p._id);
+                        Navigate(`/post`);
                       }}
                       className={styles.content}
                     >

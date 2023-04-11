@@ -22,10 +22,9 @@ h4{
 }
 
 .text {
-    background-color: white;
+    background-color: rgb(83, 83, 83);
     width: 100%;
     margin: auto;
-    color: #282c34;
     font-size: max(1em, 1vw);
     min-height: 250px;
 }

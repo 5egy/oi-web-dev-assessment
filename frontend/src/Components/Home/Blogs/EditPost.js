@@ -1,46 +1,46 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../../../styles/Write.module.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost } from "../../../Redux/postSlice";
+import { getPost, editPost } from "../../../Redux/postSlice";
 import { writePost } from "../../../Redux/postSlice";
 const Write = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const edit = useSelector((state) => state.posts.edit);
 
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState({});
+  console.log(edit._id);
 
   useEffect(() => {
-    if (!id) return;
-   async function editPost(){
-    await dispatch(getPost(id)).unwrap()
-   }
-   editPost()
-  }, []);
+    async function editPost() {
+      await dispatch(getPost(id)).unwrap();
+    }
 
-  console.log(JSON.stringify(edit))
+    editPost();
+  }, []);
 
   function changeValue(e) {
     setPost({ ...post, [e.name]: e.value });
   }
 
-  function createPost(e) {
-    e.preventDefault();
-    dispatch(writePost(post));
-  }
-
   return (
     <div>
       <h4>Create Post</h4>
-      <form className={style.form} onSubmit={(e) => createPost(e)}>
+      <form
+        className={style.form}
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(editPost(edit._id, post));
+        }}
+      >
         <div>
           <input
             type="text"
             name="title"
-            value={post.title}
+            value={post.title ?? edit.title}
             onChange={(e) => changeValue(e.target)}
             placeholder="title"
           />
@@ -50,7 +50,7 @@ const Write = () => {
           <select
             type="text"
             name="category"
-            value={post.category}
+            value={post.category ?? edit.category}
             onChange={(e) => changeValue(e.target)}
           >
             <option value="Tech">Tech</option>
@@ -64,7 +64,7 @@ const Write = () => {
           <input
             type="text"
             name="tags"
-            value={post.tags}
+            value={post.tags ?? edit.tags}
             onChange={(e) => changeValue(e.target)}
             placeholder="tags"
           />
@@ -75,14 +75,14 @@ const Write = () => {
           <ReactQuill
             className={style.text}
             placeholder="content"
-            value={post.content}
+            value={post.content ?? edit.content}
             onChange={(e) => {
               setPost({ ...post, content: e });
             }}
           />
         </div>
 
-        <button>Create Post</button>
+        <button >Update Post</button>
       </form>
     </div>
   );
