@@ -37,6 +37,16 @@
   cursor: pointer;
 }
 
+button:disabled{
+  opacity: .3;
+}
+
+.info{
+  color: red;
+  font-size: max(.7vw, .7em) !important;
+  opacity: .7;
+}
+
 .input p {
   font-size: max(0.8vw, 0.9em);
 }
