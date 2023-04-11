@@ -1,24 +1,41 @@
-import React, { useState } from "react";
-import style from "../../styles/Write.module.css";
+import React, { useEffect,useState } from "react";
+import style from "../../../styles/Write.module.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../../../Redux/postSlice";
+import { writePost } from "../../../Redux/postSlice";
 const Write = () => {
-  const [post, setPost] = useState({
-    title: "",
-    content: "",
-    category: "tech",
-    tags: "",
-    author: "seego",
-    comments: []
-  });
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const edit = useSelector((state) => state.posts.edit);
+
+  const [post, setPost] = useState({})
+
+  useEffect(() => {
+    if (!id) return;
+   async function editPost(){
+    await dispatch(getPost(id)).unwrap()
+   }
+   editPost()
+  }, []);
+
+  console.log(JSON.stringify(edit))
 
   function changeValue(e) {
     setPost({ ...post, [e.name]: e.value });
   }
+
+  function createPost(e) {
+    e.preventDefault();
+    dispatch(writePost(post));
+  }
+
   return (
     <div>
       <h4>Create Post</h4>
-      <form action="" className={style.form}>
+      <form className={style.form} onSubmit={(e) => createPost(e)}>
         <div>
           <input
             type="text"
@@ -44,7 +61,6 @@ const Write = () => {
         </div>
 
         <div>
-          {/* <div dangerouslySetInnerHTML={{__html: post.content}}></div> */}
           <input
             type="text"
             name="tags"
