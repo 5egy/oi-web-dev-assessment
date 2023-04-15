@@ -17,7 +17,7 @@ import { userActions } from "./Redux/userSlice";
 function App() {
   const posts = useSelector((state) => state.posts.allPosts);
   const user = useSelector((state) => state.users.user);
-console.log(user)
+  
   const dispatch = useDispatch();
 
   useEffect(() => {

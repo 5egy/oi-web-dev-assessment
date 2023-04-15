@@ -13,6 +13,8 @@ app.use(postRoutes)
 
 
 
-app.listen(5000)
+app.listen(5000, ()=>{
+    console.log("SERVER RUNNING")
+})
 //At7GgLLZQntBz2gW
 //mongodb+srv://soshice:At7GgLLZQntBz2gW@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority

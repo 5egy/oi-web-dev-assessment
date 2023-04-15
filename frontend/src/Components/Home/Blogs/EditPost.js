@@ -13,7 +13,6 @@ const Write = () => {
   const edit = useSelector((state) => state.posts.edit);
 
   const [post, setPost] = useState({});
-  console.log(edit._id);
 
   useEffect(() => {
     async function editPost() {
