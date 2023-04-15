@@ -44,6 +44,16 @@ const Land = () => {
       <h1>Welcome to My Blog App</h1>
       {url.pathname === "/register" ? (
         <form onSubmit={(e) => register(e)}>
+
+<input
+            type="text"
+            placeholder="fullName"
+            name="fullName"
+            required
+            onChange={(e) => {
+              setDetails({ ...details, [e.target.name]: e.target.value });
+            }}
+          />
           <input
             type="text"
             placeholder="username"
