@@ -1,5 +1,5 @@
 const {MongoClient} = require("mongodb")
-const url = "https://segblog-backend.onrender.com/"
+const url = "mongodb:https://segblog-backend.onrender.com/"
 const client = new MongoClient(url)
 
 const dbName = "my_blog"
