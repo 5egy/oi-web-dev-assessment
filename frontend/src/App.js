@@ -17,7 +17,7 @@ import { userActions } from "./Redux/userSlice";
 function App() {
   const posts = useSelector((state) => state.posts.allPosts);
   const user = useSelector((state) => state.users.user);
-
+console.log(user)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
     if (!user.username && window.localStorage.user) {
       dispatch(userActions.setUser());
     }
-  }, []);
+  }, [dispatch, user.username]);
 
   return (
     <div className={styles.App}>
@@ -43,7 +43,7 @@ function App() {
             <Route path={"/post"} element={<Post posts={posts} />} />
             <Route path={"/writepost"} element={<Write />} />
             <Route path={"/writepost/:id"} element={<EditPost />} />
-            <Route path={"/admin"} element={<Admin />} />
+            <Route path={"/admin"} element={ <Admin />} />
             <Route
               path={"*"}
               element={
@@ -58,5 +58,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

@@ -7,7 +7,6 @@ import { userActions } from "../../Redux/userSlice";
 const Nav = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch()
-  const user = useSelector(state => state.users.user)
 
   return (
     <nav className={style.navBar}>

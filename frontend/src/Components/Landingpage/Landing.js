@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "../../styles/Input.module.css";
 
-import { getUser, postUser } from "../../Redux/userSlice";
+import { postUser } from "../../Redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Land = () => {

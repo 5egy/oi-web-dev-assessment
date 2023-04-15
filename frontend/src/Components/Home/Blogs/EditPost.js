@@ -5,7 +5,8 @@ import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPost, editPost } from "../../../Redux/postSlice";
-import { writePost } from "../../../Redux/postSlice";
+
+
 const Write = () => {
   const { id } = useParams();
   const dispatch = useDispatch();

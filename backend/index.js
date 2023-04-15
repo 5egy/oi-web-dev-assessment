@@ -4,7 +4,9 @@ const userRoutes = require("./routes/user")
 const postRoutes = require("./routes/post")
 const app = express();
 const bodyParser = require("body-parser")
-app.use(cors())
+app.use(cors({
+    origin: "*"
+}))
 app.use(bodyParser.json())
 app.use(userRoutes)
 app.use(postRoutes)
