@@ -3,6 +3,12 @@ const router = express.Router();
 const connect = require("../database/db");
 const { ObjectId } = require("mongodb");
 
+router.get("/", async (req, res) => {
+  const db = await connect();
+  const posts = await db.collection("posts").find().toArray();
+  res.send(posts.reverse());
+});
+
 router.get("/posts", async (req, res) => {
   const db = await connect();
   const posts = await db.collection("posts").find().toArray();
