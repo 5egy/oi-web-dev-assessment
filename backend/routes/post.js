@@ -6,6 +6,7 @@ const { ObjectId } = require("mongodb");
 router.get("/", async (req, res) => {
   const db = await connect();
   const posts = await db.collection("posts").find().toArray();
+  console.log(posts)
   res.send(posts.reverse());
 });
 

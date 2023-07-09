@@ -1,7 +1,6 @@
 const {MongoClient} = require("mongodb")
-const url = "mongodb://localhost:5000"
+const url = "mongodb+srv://soshice:xXzewLhtzTROsAL7@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority"
 //mongodb+srv://soshice:xXzewLhtzTROsAL7@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority
-
 const client = new MongoClient(url)
 
 const dbName = "my_blog"

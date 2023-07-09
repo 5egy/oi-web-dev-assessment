@@ -40,17 +40,17 @@ const postSlice = createSlice({
 });
 
 export const getPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const products = await fetch("https://segblog-backend.onrender.com/posts/");
+  const products = await fetch("http://localhost:5000/posts");
   return products.json();
 });
 
 export const getPost = createAsyncThunk("posts/fetchPost", async (id) => {
-  const products = await fetch("https://segblog-backend.onrender.com/posts/" + id);
+  const products = await fetch("http://localhost:5000/posts/" + id);
   return products.json();
 });
 
 export const writePost = createAsyncThunk("posts/addPost", async (post) => {
-  await fetch("https://segblog-backend.onrender.com/posts", {
+  await fetch("http://localhost:5000/posts", {
     method: "POST",
     body: JSON.stringify(post),
     headers: { "Content-type": "application/json" },
@@ -59,7 +59,7 @@ export const writePost = createAsyncThunk("posts/addPost", async (post) => {
 });
 
 export const editPost = createAsyncThunk("posts/patchPost", async (id, post) => {
-  await fetch("https://segblog-backend.onrender.com/posts/" + id , {
+  await fetch("http://localhost:5000/posts/" + id , {
     method: "PATCH",
     body: JSON.stringify(post),
     headers: { "Content-type": "application/json" },
@@ -68,7 +68,7 @@ export const editPost = createAsyncThunk("posts/patchPost", async (id, post) => 
 });
 
 export const deletePost = createAsyncThunk("posts/delPost", async (id) => {
-  await fetch("https://segblog-backend.onrender.com/posts", {
+  await fetch("http://localhost:5000/posts", {
     method: "DELETE",
     body: JSON.stringify({id: id}),
     headers: { "Content-type": "application/json" },
