@@ -28,12 +28,12 @@ const userSlice = createSlice({
 });
 
 export const getUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const products = await fetch("http://localhost:5000/users/");
+  const products = await fetch("https://segoblog.onrender.com/users/");
   return products.json();
 });
 
 export const getUser = createAsyncThunk("users/fetchUser", async (data) => {
-  const products = await fetch("http://localhost:5000/login/" ,{
+  const products = await fetch("https://segoblog.onrender.com/login/" ,{
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json" },
@@ -42,7 +42,7 @@ export const getUser = createAsyncThunk("users/fetchUser", async (data) => {
 });
 
 export const postUser = createAsyncThunk("users/postUser", async (data) => {
-  const products = await fetch("http://localhost:5000/register/", {
+  const products = await fetch("https://segoblog.onrender.com/register/", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json" },
