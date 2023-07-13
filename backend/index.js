@@ -5,7 +5,10 @@ const postRoutes = require("./routes/post")
 const app = express();
 const bodyParser = require("body-parser")
 app.use(cors({
-    origin: ["https://segblog.vercel.app", "http://localhost:3000", "http://localhost:5500"]
+    origin: ["https://segblog.vercel.app", "http://localhost:3000", "http://localhost:5500"],
+    optionsSuccessStatus: 200,
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+        
 }))
 app.use(bodyParser.json())
 app.use(userRoutes)
