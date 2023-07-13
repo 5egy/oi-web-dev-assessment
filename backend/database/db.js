@@ -1,7 +1,7 @@
 const {MongoClient} = require("mongodb")
-const url = "mongodb+srv://soshice:xXzewLhtzTROsAL7@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority"
-//mongodb+srv://soshice:xXzewLhtzTROsAL7@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority
-const client = new MongoClient(url)
+const URL = process.env.URL;
+// const url = "mongodb+srv://soshice:xXzewLhtzTROsAL7@cluster0.syhr70n.mongodb.net/?retryWrites=true&w=majority"
+const client = new MongoClient(URL)
 
 const dbName = "my_blog"
 
